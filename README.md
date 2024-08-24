@@ -47,13 +47,9 @@ Windows Activator — это простое приложение для акти
 2. Запустите команду сборки:
    ```bash
    pyinstaller --onefile --windowed main.py
-```
+   ```
 
-Найдите готовый файл в папке dist.
-
-### Автоматическое создание релиза
-
-Этот проект использует GitHub Actions для автоматической сборки и загрузки исполняемого файла в раздел [Releases](https://github.com/yourusername/windows-activator/releases) при создании нового тега в формате v1.0.0.
+3. Найдите готовый файл в папке dist.
 
 ## Лицензия
 
