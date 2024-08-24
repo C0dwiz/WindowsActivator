@@ -28,13 +28,15 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller --onefile --windowed main.py
+            pyinstaller --onefile --windowed main.py
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           tag: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: "Automatically generated release for version ${{ github.ref }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
