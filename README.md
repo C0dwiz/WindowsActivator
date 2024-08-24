@@ -48,6 +48,7 @@ Windows Activator — это простое приложение для акти
    ```bash
    pyinstaller --onefile --windowed main.py
 ```
+
 Найдите готовый файл в папке dist.
 
 ### Автоматическое создание релиза
