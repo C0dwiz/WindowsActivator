@@ -2,8 +2,8 @@ name: Build and Upload Executable
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -28,22 +28,10 @@ jobs:
 
       - name: Build executable
         run: |
-            pyinstaller --onefile --windowed main.py
-
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag: ${{ github.ref }}
-          name: Release ${{ github.ref }}
-          body: "Automatically generated release for version ${{ github.ref }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pyinstaller --onefile --windowed main.py
 
       - name: Upload executable
-        uses: softprops/action-gh-release@v1
+        uses: actions/upload-artifact@v2
         with:
-          tag: ${{ github.ref }}
-          files: dist/main.exe
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: winacti
+          path: dist/main.exe
